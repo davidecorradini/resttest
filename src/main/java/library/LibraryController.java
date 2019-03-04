@@ -25,7 +25,7 @@ public class LibraryController {
 
     @RequestMapping(value = "/book", method = RequestMethod.PUT)
     public boolean addBook(@RequestParam(value = "title") String title, @RequestParam(value = "author") String author,
-                           @RequestParam(value = "release_date") String releaseDateString,
+                           @RequestParam(value = "releaseDate") String releaseDateString,
                            @RequestParam(value = "price") double price){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
