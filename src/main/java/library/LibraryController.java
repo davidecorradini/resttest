@@ -24,16 +24,16 @@ public class LibraryController {
     }
 
     @RequestMapping(value = "/book", method = RequestMethod.PUT)
-    public boolean addBook(@RequestParam(value = "title") String title, @RequestParam(value = "author") String author,
+    public long addBook(@RequestParam(value = "title") String title, @RequestParam(value = "author") String author,
                            @RequestParam(value = "releaseDate") String releaseDateString,
                            @RequestParam(value = "price") double price){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date releaseDate = sdf.parse(releaseDateString);
-            BookManager.getInstance().addBook(title, author, releaseDate, price);
-            return true;
+            Book newBook = BookManager.getInstance().addBook(title, author, releaseDate, price);
+            return newBook.getId();
         } catch (ParseException e) {
-            return false;
+            return 0;
         }
 
     }

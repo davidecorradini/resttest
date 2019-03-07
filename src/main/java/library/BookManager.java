@@ -26,10 +26,10 @@ public class BookManager {
         library.put(id, book);
     }
 
-    public boolean addBook(String title, String author, Date releaseDate, double price) {
+    public Book addBook(String title, String author, Date releaseDate, double price) {
         Book newBook = new Book(title, author, releaseDate, price);
         addBookToMap(newBook);
-        return true;
+        return newBook;
     }
 
 
