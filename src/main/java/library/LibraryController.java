@@ -20,7 +20,10 @@ public class LibraryController {
 
     @RequestMapping(value = "/book", method = RequestMethod.GET)
     public Book getBook(@RequestParam(value = "id") long id) {
-        return BookManager.getInstance().getBookById(id);
+        if (id > 0 && id < Long.MAX_VALUE) {
+            return BookManager.getInstance().getBookById(id);
+        }
+        return null;
     }
 
     @RequestMapping(value = "/book", method = RequestMethod.PUT)
@@ -40,7 +43,10 @@ public class LibraryController {
 
     @RequestMapping(value = "/book", method = RequestMethod.DELETE)
     public boolean deleteBook(@RequestParam(value = "id") long id) {
-        return BookManager.getInstance().deleteBook(id);
+        if (id > 0 && id < Long.MAX_VALUE) {
+            return BookManager.getInstance().deleteBook(id);
+        }
+        return false;
     }
 
     @RequestMapping(value = "/book", method = RequestMethod.PATCH)
